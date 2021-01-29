@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dariofedes/geoter-api/issues"
   },
-  "homepage": "https://github.com/dariofedes/geoter-api#readme"
+  "homepage": "https://github.com/dariofedes/geoter-api#readme",
+  "dependencies": {
+    "apollo-server": "^2.19.2"
+  }
 }
