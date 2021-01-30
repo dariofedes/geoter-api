@@ -20,8 +20,13 @@ module.exports = gql`
         message: String
     }
 
+    type UserVerificationFeedback {
+        success: Boolean!
+        user: User
+    }
+
     type Query {
-        test: String
+        testVerification: String
     }
 
     input UserRegisterInput {
@@ -38,5 +43,6 @@ module.exports = gql`
     type Mutation {
         registerUser(user: UserRegisterInput!): UserRegistrationFeedback!
         authenticateUser(user: UserAuthenticateInput!): UserAuthenticateFeedback!
+        verifyUser(verificationCode: String!): UserVerificationFeedback!
     }
 `

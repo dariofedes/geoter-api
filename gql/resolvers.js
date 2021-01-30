@@ -5,13 +5,14 @@ const {
     registerUser,
     authenticateUser,
     sendVerificationEmail,
-    sendAlertRegistrationEmail
+    sendAlertRegistrationEmail,
+    verifyUser,
 } = require('geoter-server-logic')
 const { env: { JWT_SECRET, JWT_EXP } } = process
 
 module.exports = {
     Query: {
-        test: () => "Server working"
+        testVerification: (_, __, { loggedUserId, verifyed, res }) => verifyed && loggedUserId ||res.status(401).json("UNAUTHORIZED")
     },
 
     Mutation: {
@@ -59,6 +60,14 @@ module.exports = {
                 } else {
                     throw new Error('INTERNAL_SERVER_ERROR')
                 }
+            }
+        },
+
+        verifyUser: async(_, { verificationCode }, { loggedUserId }) => {
+            const user = await  verifyUser(loggedUserId, verificationCode)
+            return {
+                success: true,
+                user
             }
         }
     }
