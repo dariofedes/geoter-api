@@ -12,17 +12,31 @@ module.exports = gql`
         message: String!
     }
 
+    type UserAuthenticateFeedback {
+        success: Boolean!
+        verifyed: Boolean
+        token: String
+        user: User
+        message: String
+    }
+
     type Query {
         test: String
     }
 
-    input UserInput {
+    input UserRegisterInput {
         email: String!
         username: String!
         password: String!
     }
 
+    input UserAuthenticateInput {
+        email: String!
+        password: String!
+    }
+
     type Mutation {
-        registerUser(user: UserInput!): UserRegistrationFeedback!
+        registerUser(user: UserRegisterInput!): UserRegistrationFeedback!
+        authenticateUser(user: UserAuthenticateInput!): UserAuthenticateFeedback!
     }
 `

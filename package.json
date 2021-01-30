@@ -21,6 +21,7 @@
     "apollo-server": "^2.19.2",
     "dotenv": "^8.2.0",
     "geoter-data": "file:../geoter-data",
-    "geoter-server-logic": "file:../geoter-server-logic"
+    "geoter-server-logic": "file:../geoter-server-logic",
+    "jsonwebtoken": "^8.5.1"
   }
 }
